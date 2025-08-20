@@ -1,0 +1,6 @@
+dify-plugin
+greenlet
+requests
+beautifulsoup4
+lxml
+wechatarticles

@@ -1,0 +1,18 @@
+identity:
+  author: Dify
+  name: wechat_articles
+  label:
+    en_US: "WeChat Article Crawler"
+    zh_Hans: "微信公众号文章爬虫"
+  description:
+    en_US: A tool for crawling articles from WeChat official accounts
+    zh_Hans: 微信公众号文章爬虫插件，用于获取微信公众号文章信息
+  icon: icon.svg
+  tags:
+    - "search"
+    - "utilities"
+tools:
+  - tools/wechat_articles_tool.yaml
+extra:
+  python:
+    source: provider/wechat_articles.py

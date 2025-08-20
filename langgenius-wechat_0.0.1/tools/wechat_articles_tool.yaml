@@ -1,0 +1,130 @@
+identity:
+  name: wechat_articles_tool
+  author: Dify
+  label:
+    en_US: WeChat Articles Crawler
+    zh_Hans: 微信公众号文章爬虫
+description:
+  human:
+    en_US: A tool for getting WeChat official account article information, including article urls and details.
+    zh_Hans: 一个用于获取微信公众号文章信息的工具，包括文章链接和详情。
+  llm: A tool for getting WeChat official account article information, including article urls and details.
+parameters:
+  - name: action
+    type: string
+    required: true
+    label:
+      en_US: Action
+      zh_Hans: 操作类型
+    human_description:
+      en_US: The action to perform, options are get_article_urls (get article URLs) and get_article_details (get article details)
+      zh_Hans: 要执行的操作，可选值为get_article_urls（获取文章链接）和get_article_details（获取文章详情）
+    llm_description: The action to perform, must be either get_article_urls or get_article_details
+    enum:
+      - get_article_urls
+      - get_article_details
+    form: llm
+  - name: cookie
+    type: string
+    required: true
+    label:
+      en_US: Cookie
+      zh_Hans: Cookie
+    human_description:
+      en_US: Cookie obtained from the WeChat official account platform
+      zh_Hans: 微信公众号平台的cookie
+    llm_description: Cookie for WeChat official account platform authentication
+    form: llm
+  - name: token
+    type: string
+    required: true
+    label:
+      en_US: Token
+      zh_Hans: Token
+    human_description:
+      en_US: Token obtained from the WeChat official account platform
+      zh_Hans: 微信公众号平台的token
+    llm_description: Token for WeChat official account platform authentication
+    form: llm
+  - name: nickname
+    type: string
+    required: true
+    label:
+      en_US: Nickname
+      zh_Hans: 昵称
+    human_description:
+      en_US: Nickname of the WeChat official account
+      zh_Hans: 微信公众号的昵称
+    llm_description: Nickname of the target WeChat official account
+    form: llm
+  - name: biz
+    type: string
+    required: true
+    label:
+      en_US: Biz
+      zh_Hans: Biz
+    human_description:
+      en_US: Unique identifier for the WeChat official account
+      zh_Hans: 微信公众号的唯一标识
+    llm_description: Unique business identifier of the WeChat official account
+    form: llm
+  - name: appmsg_token
+    type: string
+    required: false
+    label:
+      en_US: Appmsg Token
+      zh_Hans: Appmsg Token
+    human_description:
+      en_US: Appmsg_token obtained by capturing packets when opening WeChat official account articles
+      zh_Hans: 点开微信公众号文章抓包工具获取的appmsg_token
+    llm_description: Token required for accessing article details, obtained from network capture
+    form: llm
+  - name: wechat_cookie
+    type: string
+    required: false
+    label:
+      en_US: WeChat Cookie
+      zh_Hans: WeChat Cookie
+    human_description:
+      en_US: Cookie obtained by capturing packets when opening WeChat official account articles
+      zh_Hans: 点开微信公众号文章抓包工具获取的cookie
+    llm_description: Cookie required for accessing article details, obtained from network capture
+    form: llm
+  - name: article_url
+    type: string
+    required: false
+    label:
+      en_US: Article URL
+      zh_Hans: 文章链接
+    human_description:
+      en_US: URL of the WeChat official account article (required for getting article details)
+      zh_Hans: 微信公众号文章链接（获取文章详情时需要）
+    llm_description: URL of the specific article to get details (required for get_article_details action)
+    form: llm
+  - name: begin
+    type: number
+    required: false
+    default: 0
+    label:
+      en_US: Begin
+      zh_Hans: 起始页
+    human_description:
+      en_US: Starting page number for crawling articles
+      zh_Hans: 起始爬取的页数
+    llm_description: Starting index for fetching articles
+    form: llm
+  - name: count
+    type: number
+    required: false
+    default: 5
+    label:
+      en_US: Count
+      zh_Hans: 数量
+    human_description:
+      en_US: Number of articles to crawl each time (1-5)
+      zh_Hans: 每次爬取的数量（1-5）
+    llm_description: Number of articles to retrieve per request (range 1-5)
+    form: llm
+extra:
+  python:
+    source: tools/wechat_articles_tool.py
